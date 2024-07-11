@@ -11,6 +11,10 @@ class Model:
         for country in DAO.getCountries():
             self._idMap[country.CCode]=country
 
+    def get_countries(self):
+        return self._grafo.nodes()
+    def get_grafo(self):
+        return self._grafo
 
     def crea_grafo(self,year):
         self._grafo.clear()
