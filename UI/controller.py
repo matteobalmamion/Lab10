@@ -9,4 +9,12 @@ class Controller:
         self._model = model
 
     def handleCalcola(self, e):
-        pass
+        self._view._txt_result.controls.clear()
+        grafo=self._model.crea_grafo(self._view._txtAnno.value)
+        self._view._txt_result.controls.append(ft.Text(f"Il grafo ha  {self._model.getComponentiConnesse()} componenti connesse"))
+        nodi=list(grafo.nodes)
+        nodi.sort(key=lambda x: x.StateAbb)
+        for country in nodi:
+            self._view._txt_result.controls.append(ft.Text(f"{country} -- {grafo.degree(country)}"))
+        self._view.update_page()
+
